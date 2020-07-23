@@ -19,6 +19,8 @@ use models\Position;
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"
           type="text/css"/>
 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -54,6 +56,7 @@ use models\Position;
             <th>ID</th>
             <th>Первый аттрибут</th>
             <th>Второй аттрибут</th>
+            <th>Удалить позицию</th>
         </tr>
         </thead>
         <tbody>
@@ -63,6 +66,7 @@ use models\Position;
                 <td><?= $position->id ?></td>
                 <td><?= $position->attr1 ?></td>
                 <td><?= $position->attr2 ?></td>
+                <td class="remove" data-id="<?= $position->id ?>"><span class="fa fa-remove"></span></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

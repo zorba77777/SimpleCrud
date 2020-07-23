@@ -1,5 +1,6 @@
 $(function () {
 
+    // Функция для сохранения позиции
     $('#save-position').on('click', function () {
 
             $.post(
@@ -20,6 +21,23 @@ $(function () {
                     }
                 }
             );
+    });
+
+    $('.remove').on('click', function () {
+        let $this = $(this);
+        $.post(
+            '/main/remove',
+            {
+                id: $this.data('id')
+            },
+            function (data) {
+                if (data === 'success') {
+                    $this.parent().remove();
+                } else {
+                    alert('Не удалось удалить позицию');
+                }
+            }
+        );
     });
 
 });

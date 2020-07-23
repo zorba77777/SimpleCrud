@@ -122,15 +122,9 @@ abstract class ActiveRecord
     public function deleteRecord() {
         $tb = static::$tableName;
 
-        $whereRequestPart = '';
-        foreach ($this as $columnName => $columnValue) {
-            $whereRequestPart = $whereRequestPart . $columnName . ' = "' . $columnValue . '" AND ';
-        }
-        $whereRequestPart = trim($whereRequestPart, ' AND ');
-
         App::$pdo->query("
             DELETE FROM $tb
-            WHERE $whereRequestPart
+            WHERE {$this->getPrimaryKeyName()} = '{$this->getPrimaryKeyValue()}'
             ");
     }
 

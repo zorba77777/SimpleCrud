@@ -36,4 +36,15 @@ class MainController extends Controller
         echo App::$pdo->lastInsertId();
     }
 
+    /**
+     * Удаляет позицию
+     */
+    public function remove()
+    {
+        $position = new Position();
+        $position->id = intval(App::$request->getParam('id'));
+        $position->deleteRecord();
+        echo 'success';
+    }
+
 }
