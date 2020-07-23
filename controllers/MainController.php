@@ -2,7 +2,9 @@
 
 namespace controllers;
 
+use core\App;
 use core\Controller;
+use models\Position;
 use repositories\PositionRepository;
 
 /**
@@ -20,6 +22,18 @@ class MainController extends Controller
         $repository = new PositionRepository();
         $positions = $repository->findAll();
         $this->render('index', ['positions' => $positions]);
+    }
+
+    /**
+     * Добавляет позицию
+     */
+    public function add()
+    {
+        $position = new Position();
+        $position->attr1 = App::$request->getParam('attr1');
+        $position->attr2 = App::$request->getParam('attr2');
+        $position->saveRecord();
+        echo App::$pdo->lastInsertId();
     }
 
 }

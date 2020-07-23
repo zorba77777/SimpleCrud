@@ -19,9 +19,9 @@ class Position extends ActiveRecord
 
     public int $id;
 
-    public string $attr1;
+    public ?string $attr1;
 
-    public string $attr2;
+    public ?string $attr2;
 
     public function __construct($id = 0, $attr1 = '', $attr2 = '')
     {
