@@ -8,10 +8,6 @@ h1 {
     margin-bottom: 1em;
 }
 
-.font-size-lg {
-    font-size: 1.6rem;
-}
-
 button {
     background-color: DodgerBlue;
     border: none;
@@ -27,16 +23,6 @@ button {
 
 button:hover {
     background-color: RoyalBlue;
-}
-
-.form-inline {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-}
-
-.error {
-    color: red;
 }
 
 table {
