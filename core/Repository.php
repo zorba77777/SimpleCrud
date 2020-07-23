@@ -52,6 +52,10 @@ abstract class Repository
         } else {
             return [];
         }
+    }
 
+    public function findAll()
+    {
+        return $this->find(new SqlRequestParams());
     }
 }
