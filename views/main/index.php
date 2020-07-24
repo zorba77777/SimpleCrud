@@ -61,11 +61,18 @@ use models\Position;
         </thead>
         <tbody>
 
+        <tr>
+            <td><input class="search" id="id"></td>
+            <td><input class="search" id="attr1"></td>
+            <td><input class="search" id="attr2"></td>
+            <td></td>
+        </tr>
+
         <?php foreach ($positions as $position): ?>
             <tr>
-                <td><?= $position->id ?></td>
-                <td><?= $position->attr1 ?></td>
-                <td><?= $position->attr2 ?></td>
+                <td class="id"><?= $position->id ?></td>
+                <td class="attr1"><?= $position->attr1 ?></td>
+                <td class="attr2"><?= $position->attr2 ?></td>
                 <td class="remove" data-id="<?= $position->id ?>"><span class="fa fa-remove"></span></td>
             </tr>
         <?php endforeach; ?>
@@ -87,12 +94,12 @@ use models\Position;
 
                 <form>
                     <div class="form-group">
-                        <label for="attr1" class="col-form-label">Первый аттрибут</label>
-                        <input type="text" class="form-control" id="attr1" required autofocus>
+                        <label for="attr1-save" class="col-form-label">Первый аттрибут</label>
+                        <input type="text" class="form-control" id="attr1-save" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label for="attr2" class="col-form-label">Второй аттрибут</label>
-                        <input type="text" class="form-control" id="attr2" required>
+                        <label for="attr2-save" class="col-form-label">Второй аттрибут</label>
+                        <input type="text" class="form-control" id="attr2-save" required>
                     </div>
                     <div class="form-inline">
                         <button id="save-position" type="button" data-dismiss="modal">Сохранить позицию</button>

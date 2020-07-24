@@ -1,12 +1,12 @@
 $(function () {
 
-    // Функция для сохранения позиции
+    // Сохраняем позицию
     $('#save-position').on('click', function () {
             $.post(
                 '/main/add',
                 {
-                    attr1: $('#attr1').val(),
-                    attr2: $('#attr2').val()
+                    attr1: $('#attr1-save').val(),
+                    attr2: $('#attr2-save').val()
                 },
                 function (id) {
                     if (id !== null) {
@@ -17,8 +17,8 @@ $(function () {
                         let tr = $('<tr>');
 
                         tr.append($('<td>').text(id))
-                            .append($('<td>').text($('#attr1').val()))
-                            .append($('<td>').text($('#attr2').val()))
+                            .append($('<td>').text($('#attr1-save').val()))
+                            .append($('<td>').text($('#attr2-save').val()))
                             .append(lastTd);
                         $("#table").find('tbody').append(tr);
 
@@ -29,7 +29,34 @@ $(function () {
             );
     });
 
+    // Удаляем позицию
     $('.remove').on('click', remove);
+
+    // Ищем позицию
+    $('.search').on('keypress', function (e) {
+        if(e.key === 'Enter') {
+            let attr = $(this).attr('id');
+            let value = $(this).val();
+
+            $('.' + attr).each(function () {
+                if ($(this).text().indexOf(value) === -1) {
+                    $(this).parent().attr('hidden', true);
+                }
+            })
+
+            if (!$('.clear-search').length) {
+                $('body').append('<button class="clear-search">Очистить поиск</button>');
+
+                $('.clear-search').on('click', function () {
+                    $("#table").find(':hidden').attr('hidden', false);
+                    $('.search').val('')
+                    $('.clear-search').remove();
+                })
+            }
+
+        }
+    });
+
 
 });
 
